@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styles from './header.module.css';
 
-export default function Header({ filterMovies, searchMovie}){
+export default function Header({ filterMovies, searchMovie }){
+    
     const [ searchInput, setSearchInput ] = useState('');
     var genreTypes = [
         { id: "1", name: "Drama" },
@@ -27,7 +28,6 @@ export default function Header({ filterMovies, searchMovie}){
         e.preventDefault();
         setFilter('');
         searchMovie(searchInput);
-        
     }
     return (
         <div className={styles.container}>

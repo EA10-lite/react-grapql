@@ -6,9 +6,6 @@ import Header from './components/header/header';
 import MoviesContainer from './components/moviesContainer/movies';
 
 function App() {
-
-
-  
   const [ data, setData ] = useState([]);
   const [ movies, setMovies] = useState([]);
   const [ loading, setLoading ] = useState(true);
@@ -76,12 +73,12 @@ function App() {
   if (error) return <p>{error.message}</p>
 
   return (
-        <div className={styles.container}>
-          <Header filterMovies={filterMovies} searchMovie={searchMovie} />
-            <div className={styles.content}>
-              <MoviesContainer data={movies}  />
-          </div>
-        </div>
+    <div className={styles.container}>
+      <Header filterMovies={filterMovies} searchMovie={searchMovie} />
+      <div className={styles.content}>
+        <MoviesContainer data={movies}  />
+      </div>
+    </div>
   );
 }
 
