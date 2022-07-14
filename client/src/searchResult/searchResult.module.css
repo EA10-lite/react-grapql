@@ -1,0 +1,22 @@
+.pageTitle {
+    text-align: center;
+    margin:32px 0;
+}
+.item {
+    margin-bottom: 64px;
+}
+
+.dateContainer {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    border: 1px solid rgb(219,219,219);
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2);
+}
+.date {
+    font-size: 24px;
+    font-weight: 600;
+}
