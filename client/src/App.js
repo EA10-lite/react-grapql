@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom'
 import Header from './components/header/header';
 import MoviesContainer from './components/moviesContainer/movies';
 import FilteredMovies from './components/filter/filteredMovies';
+import SearchResult from './components/searchResult/searchResult';
 
 // apollo-client
 import { ApolloProvider, ApolloClient, InMemoryCache, gql } from "@apollo/client";
@@ -27,11 +28,17 @@ function App() {
                 <Route path="genre">
                   <Route path=":id" element={<FilteredMovies />} />
                 </Route>
+                <Route path="search">
+                  <Route path=":id" element={<SearchResult />} />
+                </Route>
               </Routes>
             </div>
           </div>
       </ApolloProvider>
   );
 }
+
+export default App;
+
 
 export default App;
