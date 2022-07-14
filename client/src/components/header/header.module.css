@@ -1,0 +1,68 @@
+
+.container {
+    padding:32px;
+    background-color: #f4f6f6;
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2);
+}
+.searchField {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.input {
+    flex-grow: 1;
+    height: 53px;
+    background: #FFFFFF;
+    border: 1px solid #CBD1EF;
+    border-radius: 30px 5px 5px 30px;
+    padding:0 24px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+    margin-right: 16px;
+    outline:none;
+    border:none;
+}
+.btn {
+    height:53px;
+    background: #2C3C90;
+    border-radius: 5px 30px 30px 5px;
+    width: 153px;
+    border:none;
+    outline:none;
+    font-size: 16px;
+    font-weight: 600;
+    color:white;
+    font-family: inherit;
+}
+
+.filterField {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.filter {
+    background-color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding:5px 15px;
+    border-radius: 20px;
+    width:103px;
+    text-align: center;
+    margin-right: 16px;
+    margin-bottom: 10px;
+    cursor:pointer;
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.2);
+    color:black;
+    text-decoration: none;
+}
+.filter:hover {
+    background-color: #2C3C90;
+    color:white;
+}
+@media screen and (min-width:768px) {
+    .filterField {
+        justify-content: center;
+    }
+}
