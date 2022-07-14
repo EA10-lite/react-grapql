@@ -1,40 +1,87 @@
+import { useEffect, useState } from 'react';
 import styles from './app.module.css';
-
-import { Route, Routes } from 'react-router-dom'
-
 
 // component
 import Header from './components/header/header';
 import MoviesContainer from './components/moviesContainer/movies';
-import FilteredMovies from './components/filter/filteredMovies';
-import SearchResult from './components/searchResult/searchResult';
-
-// apollo-client
-import { ApolloProvider, ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 function App() {
-  const client = new ApolloClient({
-    uri: "http://localhost:4000/graphql/",
-    cache: new InMemoryCache()
-  });
+
+
+  
+  const [ data, setData ] = useState([]);
+  const [ movies, setMovies] = useState([]);
+  const [ loading, setLoading ] = useState(true);
+  const [ error, setError ] = useState(false)
+
+  useEffect(()=> {
+    fetch("http://localhost:4000/graphql",{
+      method:"POST",
+      headers:{
+        "content-type":"application/json"
+      },
+      body:JSON.stringify({
+        query:`{
+          movies {
+            id
+            title
+            poster_path
+            description
+            release_date
+            genreTypes {
+              id
+              name
+            }
+          }
+        }`
+      })
+    })
+
+    .then(res=> { return res.json() })
+    .then(res=> {
+      setData(res.data.movies);
+      setError(false);
+      setLoading(false);
+    })
+    .catch(err=> {
+      setError(true);
+      setLoading(false);
+    })
+
+  },[])
+
+  useEffect(()=>{
+    setMovies(data);
+  },[data])
+
+  const filterMovies = (title)=> {
+    setMovies(data);
+    if(title === ''){
+      setMovies(data);
+    }
+    else {
+      return setMovies(movies => movies.filter(movie=> movie.genreTypes.find(genre=> genre.name === title)));
+    }
+  }
+
+  const searchMovie = (title)=> {
+    setMovies(data);
+    if(title === ""){
+      setMovies(data);
+    }
+    return setMovies(movies => movies.filter(movie=> movie.title.toLowerCase().includes(title)));
+  }
+
+  if (loading) return "Loading...";
+  if (error) return <p>{error.message}</p>
 
   return (
-      <ApolloProvider client={client}>
-          <div className={styles.container}>
-            <Header />
-              <div className={styles.content}>
-              <Routes>
-                <Route path="/" element={<MoviesContainer /> } />
-                <Route path="genre">
-                  <Route path=":id" element={<FilteredMovies />} />
-                </Route>
-                <Route path="search">
-                  <Route path=":id" element={<SearchResult />} />
-                </Route>
-              </Routes>
-            </div>
+        <div className={styles.container}>
+          <Header filterMovies={filterMovies} searchMovie={searchMovie} />
+            <div className={styles.content}>
+              <MoviesContainer data={movies}  />
           </div>
-      </ApolloProvider>
+        </div>
   );
 }
 

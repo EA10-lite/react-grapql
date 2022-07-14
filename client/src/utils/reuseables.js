@@ -15,7 +15,6 @@ export const groupMoviesByDate = (data)=> {
     },[]);
 
     for (let name in sortDataByDate){
-        let date = new Date(parseInt(name));
         groupDataByDate.push({date:name, data: sortDataByDate[name]});
     }
 

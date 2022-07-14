@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import styles from './header.module.css';
 
-import { NavLink, useNavigate } from 'react-router-dom';
-
-
-export default function Header(){
-    const navigate = useNavigate();
+export default function Header({ filterMovies, searchMovie}){
     const [ searchInput, setSearchInput ] = useState('');
     var genreTypes = [
         { id: "1", name: "Drama" },
@@ -17,18 +13,21 @@ export default function Header(){
         { id: "9", name: "Mystery" },
         { id: "11", name: "Sci-Fi" },
     ]
-    let activeStyle = {
-        backgroundColor: "#2C3C90",
-        color:"white",
+
+    const [ filter, setFilter ] = useState('');
+
+    const handleFilterChange = (genre)=> {
+        setFilter(genre);
+        filterMovies(genre);
+
+        setSearchInput('')
     }
 
     const handleSubmit = (e)=> {
         e.preventDefault();
-        if(searchInput.length > 1){
-            navigate(`search/${searchInput}`)
-        } else {
-            alert("Search input should not be empty!!!");
-        }
+        setFilter('');
+        searchMovie(searchInput);
+        
     }
     return (
         <div className={styles.container}>
@@ -43,18 +42,13 @@ export default function Header(){
                 <button type="search" className={styles.btn}> Search </button>
             </form>
             <div className={styles.filterField}>
-                <NavLink
-                    to="/"
-                    style={({ isActive }) => isActive ? activeStyle : undefined }
-                    className={styles.filter}
-                > All Movies </NavLink>
+                <div className={`${styles.filter} ${filter === "" && styles.active}`} onClick={()=> handleFilterChange('')}> All Movies </div>
                 { genreTypes.map(type=> (
-                    <NavLink
-                        key={type.id}
-                        to={`/genre/${type.name}`}
-                        style={({ isActive }) => isActive ? activeStyle : undefined }
-                        className={styles.filter}
-                    > { type.name } </NavLink>
+                    <div 
+                        className={`${styles.filter} ${filter === type.name && styles.active}`} 
+                        key={type.id} 
+                        onClick={()=> handleFilterChange(type.name)}
+                    > { type.name } </div>
                 ))}
             </div>
         </div>

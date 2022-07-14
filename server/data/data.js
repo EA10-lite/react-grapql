@@ -4,6 +4,7 @@ let today = new Date(timestamp);
 let august = new Date(today.getFullYear(), today.getMonth(), today.getDate()+30).getTime();
 let september =  new Date(today.getFullYear(), today.getMonth(), today.getDate()+60).getTime();
 let october =  new Date(today.getFullYear(), today.getMonth(), today.getDate()+90).getTime();
+let december = new Date(today.getFullYear(), today.getMonth(), today.getDate()+170).getTime()
 let nextYear =  new Date(today.getFullYear(), today.getMonth(), today.getDate()+200).getTime();
 
 var movies = [
@@ -51,7 +52,7 @@ var movies = [
         genreTypes:[
             {id:"2",name:"Action"},
             {id:"7",name:"Thriller"}
-        ], release_date:nextYear,
+        ], release_date:december,
         poster_path:"https://m.media-amazon.com/images/M/MV5BMjNjYWY0OGYtMDBlYi00YmI4LWExZmEtNGRlOTJiZmM0NjBlXkEyXkFqcGdeQXVyMjU0OTAwMDc@._V1_QL75_UY148_CR61,0,100,148_.jpg"
     },
     {
@@ -97,7 +98,7 @@ var movies = [
         genreTypes:[
             { id: "2", name: "Action" },
             { id: "11", name: "Sci-Fi" },
-        ], release_date:nextYear,
+        ], release_date:december,
         poster_path:"https://m.media-amazon.com/images/M/MV5BMWFmYmRiYzMtMTQ4YS00NjA5LTliYTgtMmM3OTc4OGY3MTFkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_QL75_UY148_CR9,0,100,148_.jpg"
     },
     {
@@ -179,7 +180,7 @@ var movies = [
         genreTypes:[
             {id:"3",name:"Adventure"},
             {id:"6",name:"Thriller"}
-        ], release_date:nextYear,
+        ], release_date:december,
         poster_path:"https://m.media-amazon.com/images/M/MV5BMGYzYmU2YzMtODNiZC00ZDBmLWJmOGMtMmNkYmIxNTlmNDE1XkEyXkFqcGdeQXVyMTA1OTAyOTI@._V1_QL75_UY148_CR24,0,100,148_.jpg"
     },
     {
