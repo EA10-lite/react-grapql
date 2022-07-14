@@ -10,7 +10,7 @@
     border-radius: 10px;
 }
 .title {
-    font-size: 32px;
+    font-size: 16px;
 }
 .genres {
     display: flex;
@@ -33,28 +33,11 @@
 .subtitle {
     margin-bottom: 10px;
 }
-.casts {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.cast {
-    background-color: white;
-    box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.2);
-    padding:6px 16px;
-    border-radius: 24px;
-    margin-right: 16px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-}
 
 
-@media screen and (max-width:567px) {
+@media screen and (min-width:768px) {
     .title {
-        font-size: 16px;
-        background-color: green;
+        font-size: 32px;
     }
     .subtitle {
         font-size: 12px;
